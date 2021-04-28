@@ -16,3 +16,7 @@
 // };
 
 // // checkbox.onclick = DisableCheckbox(checkbox);
+
+window.addEventListener('hashchange', () => {
+    console.log(window.location.hash);
+})
