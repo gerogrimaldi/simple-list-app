@@ -19,3 +19,50 @@
 .nav-item{
     border-radius: 10px;
 }
+
+.form-check-input{
+    text-decoration: none;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+li * {
+float: left;
+}
+li {
+    clear:both;
+    list-style:none;
+}
+input {
+    outline: none;
+  }
+
+.modifier-btn {
+    outline: none;
+    background: none;
+    border: 0px;
+    color: #888;
+    font-size: 15px;
+    width: 60px;
+    /* margin: 10px 0 0; */
+    font-family: Lato, sans-serif;
+    cursor: pointer;
+}
+
+.modifier-btn:hover {
+    color: #333;
+}
+
+.modal-dialog {
+    position: relative;
+    top: 50px;
+    right: 0px;
+    bottom: 100px;
+    left: 500px;
+    z-index: 10040;
+    overflow: auto;
+    overflow-y: auto;
+  }
