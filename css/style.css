@@ -66,3 +66,18 @@ input {
     overflow: auto;
     overflow-y: auto;
   }
+
+/* Completed */
+#completed-tasks label {
+    pointer-events:none; /* Not clickable */
+    text-decoration: line-through;
+    color: #888;
+}
+
+#completed-tasks button.edit {
+    display: none;
+}
+
+/* .list-group-item{
+    pointer-events:none; //not clickable
+} */

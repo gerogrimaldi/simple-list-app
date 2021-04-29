@@ -3,42 +3,32 @@
 //     router(window.location.hash);
 // })
 
-// var namex = new String("checkbox");
-// var checkBox=taskListItem.querySelector("input[type=checkbox]");
-// var checkboxes = document.getElementsByName(namex);
-// console.log(checkboxes.length);
-
-// for (let index = 0; index < checkboxes.length; index++) {
-
-//     if(checkboxes[index].checked = true){
-//         checkboxes[index].disabled = true;
-//     }
-// }
-
 var taskInput=document.getElementById("new-task");//Add a new task.
 console.log(taskInput);
 var addButton=document.getElementById("add-btn");
 console.log(addButton);
 var incompleteTaskHolder=document.getElementById("incomplete-tasks");//ul of #incomplete-tasks
 console.log(incompleteTaskHolder);
-var taskCount = 2;
+var completedTasksHolder=document.getElementById("completed-tasks");//completed-tasks
+
+var taskCount = 0; //to set the id´s
 
 //New task list item
 var createNewTaskElement=function(task_text){
     var listItem=document.createElement("li");
     taskCount+=1;
-	//input (checkbox)
-	var checkBox=document.createElement("input");//checkbx
+	//checkbox
+	var checkBox=document.createElement("input");
 	//label
-	var label=document.createElement("label");//label
-	//button.edit
-	var editButton=document.createElement("button");//edit button
-	//button.delete
-	var deleteButton=document.createElement("button");//delete button
+	var label=document.createElement("label");
+	//edit button
+	var editButton=document.createElement("button");
+	//delete button
+	var deleteButton=document.createElement("button");
 
 	label.innerText=task_text;
     
-	//Each elements, needs appending
+	//elements attributes
 	checkBox.type="checkbox";
 	checkBox.className="form-check-input";
     
@@ -54,7 +44,7 @@ var createNewTaskElement=function(task_text){
     
     label.htmlFor="edit-btn"+taskCount;
 
-	//and appending.
+	//appending
 	listItem.appendChild(checkBox);
 	listItem.appendChild(label);
 	listItem.appendChild(editButton);
@@ -115,10 +105,43 @@ var deleteTask=function(){
     console.log("Delete Task...");
 
     var listItem=this.parentNode;
-    // var ul=listItem.parentNode;
-
+    var ul=listItem.parentNode;
     //Remove the parent list item from the ul.
-    incompleteTaskHolder.removeChild(listItem);
+    ul.removeChild(listItem);
+}
+
+/////////////////////////////////////////////////////////////////////////////////////
+//Mark task completed
+var taskCompleted=function(){
+    console.log("Complete Task...");
+
+    //Append the task list item to the #completed-tasks
+    var listItem=this.parentNode;
+    completedTasksHolder.appendChild(listItem);
+    listItem
+    bindTaskEvents(listItem, taskIncomplete);
+}
+
+var taskIncomplete=function(){
+    console.log("Incomplete Task...");
+    //Mark task as incomplete.
+
+    //Append the task list item to the #incomplete-tasks.
+    var listItem=this.parentNode;
+    incompleteTaskHolder.appendChild(listItem);
+    bindTaskEvents(listItem,taskCompleted);
 }
 
 
+var bindTaskEvents=function(taskListItem,checkBoxEventHandler){
+	console.log("bind list item events");
+
+    //select ListItems children
+	var checkBox=taskListItem.querySelector("input[type=checkbox]");
+	var deleteButton=taskListItem.querySelector("button.delete");
+
+    //Bind deleteTask to delete button.
+    deleteButton.onclick=deleteTask;
+    //Bind taskCompleted to checkBoxEventHandler.
+    checkBox.onchange=checkBoxEventHandler;
+}

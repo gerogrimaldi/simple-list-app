@@ -44,14 +44,14 @@
   <div class="container-fluid mt-5">
     <div class="row mt-3 justify-content-center">
         <div class="col lg-4 col-md-4">
-            <!-- list -->
             <div class="card card-border">
                 <h4 class="card-header card-header-warning">To do list</h4>
                 <div class="card-body">
                     <div class="card-text">
-                        <div class="form-check">
+                      <div class="form-check">
+                          <!-- incompleted tasks -->
                           <ul class="ul" id="incomplete-tasks"> 
-                            <li>
+                            <!-- <li>
                               <input class="form-check-input" type="checkbox">
                               <label for="edit-btn1">Pay </label>
                               <input type="button" class="edit modifier-btn pull-right" data-bs-toggle="modal" data-bs-target="#edit_task" id="edit-btn1" value="Edit" onClick="getID(this.id)">
@@ -62,19 +62,26 @@
                               <label for="edit-btn2">Pay Billdas</label>
                               <input type="button" class="edit modifier-btn pull-right" data-bs-toggle="modal" data-bs-target="#edit_task" id="edit-btn2" value="Edit" onClick="getID(this.id)">
                               <button class="delete modifier-btn pull-right">Delete</button> 
-                            </li>
+                            </li> -->
                           </ul>
+                          <!-- incompleted tasks -->
+                          <!-- completed tasks -->
+                          <ul class="ul" id="completed-tasks"> 
+
+                          </ul>
+                          <!-- completed tasks -->
                         </div>
                     </div>
                   </div>
               </div>
-                <div class="list-group list-group-flush">
-                    <a href="#" class="list-group-item list-group-item-primary"  data-bs-toggle="modal" data-bs-target="#add_task">
-                        <button class="btn btn-outline-success btn-sm pull-right">Add task</button>
-                    </a>
+              <!-- add button -->
+              <div class="list-group list-group-flush">
+                <div class= "list-group-item list-group-item-primary">
+                  <input type="button" class=" btn btn-outline-success btn-sm pull-right" data-bs-toggle="modal" data-bs-target="#add_task" value="Add task">
                 </div>
+              </div>
+              <!-- add button -->
             </div>
-            <!-- list -->
         </div>
     </div>
     </div>
